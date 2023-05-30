@@ -32,6 +32,6 @@ export class LoginComponent implements OnInit {
       password: this.loginForm.value.password,
     });
 
-    this.router.navigate(['/home']);
+    this.router.navigate(['/books']);
   }
 }
