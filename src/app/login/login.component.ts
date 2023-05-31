@@ -27,11 +27,6 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log({ 
-      email: this.loginForm.value.email,
-      password: this.loginForm.value.password,
-    });
-
     this.router.navigate(['/books']);
   }
 }
