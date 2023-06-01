@@ -17,6 +17,9 @@
           (keydown.enter)="getAllBooks(search.value)"
         >
       </div>
+      <div>
+        <button class="text-white" routerLink="/">Sair</button>
+      </div>
       <!-- <div class="flex justify-end gap-x-4">
         <img src="assets/notification.png" alt="" class="">
         <img src="assets/shopping-cart.png" alt="">
@@ -33,7 +36,7 @@
     </div>
     <div>
       <div class="grid gap-5 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
-        <div *ngFor="let book of books$ | async" class="px-3 border border-gray-300 cursor-pointer group">
+        <div *ngFor="let book of books$ | async" class="px-3 border border-gray-300 cursor-pointer group" [routerLink]="['/books', book.id]">
           <div class="h-56">
             <img [src]="book.imageUrl" alt="" class="object-cover h-full w-full">
           </div>
