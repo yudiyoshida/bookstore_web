@@ -9,7 +9,7 @@
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div class="mb-5">
           <label for="email" class="font-bold">E-mail</label>
-          <input type="email" name="email" id="input-email" formControlName="email" class="peer border-2 boder-black block p-2 w-full focus:outline-none focus:border-title-blue rounded-md invalid:border-red-600">
+          <input type="email" name="email" id="input-email" formControlName="credential" class="peer border-2 boder-black block p-2 w-full focus:outline-none focus:border-title-blue rounded-md invalid:border-red-600">
           <!-- <p class="invisible peer-invalid:visible">Insira um e-mail válido.</p> -->
         </div>
         <div class="mb-10">
@@ -17,7 +17,7 @@
           <input type="password" name="password" id="input-pass" formControlName="password" class="peer border-2 boder-black block p-2 w-full focus:outline-none focus:border-title-blue rounded-md invalid:border-red-600">
         </div>
         <div>
-          <button type="submit" class="w-full bg-title-blue p-3 rounded-md hover:outline-none font-bold hover:bg-button-hover">Entrar!</button>
+          <button [disabled]="!loginForm.valid" type="submit" class="w-full bg-title-blue p-3 rounded-md hover:outline-none font-bold hover:bg-button-hover disabled:bg-gray-600">Entrar!</button>
         </div>
       </form>
     </div>

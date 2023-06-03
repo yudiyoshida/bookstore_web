@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BookListService } from './book-list.service';
 import { BookDto } from 'src/shared/dtos/book.dto';
-import { Observable, map } from 'rxjs';
+import { Observable, catchError, map } from 'rxjs';
+import { TokenService } from 'src/shared/services/token.service';
 
 @Component({
   selector: 'app-book-list',
@@ -11,7 +12,10 @@ import { Observable, map } from 'rxjs';
 export class BookListComponent implements OnInit{
   books$!: Observable<BookDto[]>
 
-  constructor(private bookListService: BookListService) {}
+  constructor(
+    private bookListService: BookListService,
+    private tokenService: TokenService,
+  ) {}
   
   ngOnInit(): void {
     this.getAllBooks('');    
@@ -19,7 +23,11 @@ export class BookListComponent implements OnInit{
 
   getAllBooks(search: string) {
     this.books$ = this.bookListService.findAllBooks(1, 30, search).pipe(
-      map((data) =>  data.data)
+      map((data) =>  data.data),
     )
+  }
+
+  deleteToken() {
+    this.tokenService.removeTokenFromLocalStorage()
   }
 }
