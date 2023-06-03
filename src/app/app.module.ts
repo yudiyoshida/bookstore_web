@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { BookListComponent } from './book-list/book-list.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
+import { SidebarComponent } from '../shared/components/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { BookDetailsComponent } from './book-details/book-details.component';
     LoginComponent,
     BookListComponent,
     BookDetailsComponent,
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,6 +28,7 @@ import { BookDetailsComponent } from './book-details/book-details.component';
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       timeOut: 5000,
+      positionClass: 'toast-bottom-left',
       preventDuplicates: true,
       progressBar: true,
     })

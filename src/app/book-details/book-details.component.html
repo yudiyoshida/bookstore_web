@@ -1,26 +1,5 @@
 <main class="min-h-screen">
-  <section class="w-full">
-    <div class="bg-title-blue p-4 flex flex-col items-center gap-y-3 md:flex-row">
-      <h1 class="font-extrabold text-white text-2xl">
-        <a routerLink="/books" href="">BookStore</a>
-      </h1>
-      <div class="grow text-center">
-        <!-- <img src="assets/magnifier.png" alt="" class="inline"> -->
-        <input
-          #search
-          type="text"
-          name="search-book"
-          id="search-book-input"
-          placeholder="Search"
-          tabindex="0"
-          class="p-2 w-full rounded-md max-w-xl"
-        >
-      </div>
-      <div>
-        <button class="text-white" routerLink="/">Sair</button>
-      </div>
-    </div>
-  </section>
+  <app-sidebar></app-sidebar>
   <section class="p-5">
     <div *ngIf="book$ | async; let book" class="flex flex-col gap-5 sm:flex-row">
       <div class="sm:basis-1/3">  

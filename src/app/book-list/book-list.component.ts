@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BookListService } from './book-list.service';
-import { BookDto } from 'src/shared/dtos/book.dto';
-import { Observable, catchError, map } from 'rxjs';
-import { TokenService } from 'src/shared/services/token.service';
+import { BookDto, BookPaginationDto } from 'src/shared/dtos/book.dto';
+import { Observable, catchError, map, of } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-book-list',
@@ -14,20 +14,32 @@ export class BookListComponent implements OnInit{
 
   constructor(
     private bookListService: BookListService,
-    private tokenService: TokenService,
+    private toastr: ToastrService,
   ) {}
   
   ngOnInit(): void {
-    this.getAllBooks('');    
+    this.getAllBooks();    
   }
 
-  getAllBooks(search: string) {
-    this.books$ = this.bookListService.findAllBooks(1, 30, search).pipe(
-      map((data) =>  data.data),
+  separateData(paginatedData: Observable<BookPaginationDto>) {
+    return paginatedData.pipe(
+      map((data) => data.data)
     )
   }
 
-  deleteToken() {
-    this.tokenService.removeTokenFromLocalStorage()
+  getAllBooks() {
+    this.bookListService.findAllBooks(1, 30, '').pipe(
+      map((response: any) => {
+        this.books$ = this.separateData(response)
+      }),
+      catchError((err) => {
+        this.toastr.error(err.error.error, 'Erro!')
+        return of([])
+      })
+    )
+  }
+
+  filterBooks($event: Observable<BookPaginationDto>) {
+    this.books$ = this.separateData($event);
   }
 }

@@ -46,17 +46,15 @@ export class LoginComponent implements OnInit {
         this.toastr.success(response.account.name, 'OK!');
 
         // armazenar token no localStorage
-        this.tokenService.saveTokenInLocalStorage(response.token)
-
+        this.tokenService.saveTokenInLocalStorage(response.token);
         this.router.navigate(['/books']);
+
       },
       error: (err) => {
-        this.toastr.error(err.error.error)
-        this.loginForm.patchValue({ password: '' });
+        this.toastr.error(err.error.error);
+        // this.loginForm.patchValue({ password: '' });
 
       }
     })
-    
-    // this.router.navigate(['/books']);
   }
 }
