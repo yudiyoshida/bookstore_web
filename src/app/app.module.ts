@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ToastrModule } from 'ngx-toastr';
@@ -11,6 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { BookListComponent } from './book-list/book-list.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { SidebarComponent } from '../shared/components/sidebar/sidebar.component';
+import { AuthorizationInterceptor } from 'src/shared/interceptors/authorization/authorization.interceptor';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,9 @@ import { SidebarComponent } from '../shared/components/sidebar/sidebar.component
       progressBar: true,
     })
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthorizationInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

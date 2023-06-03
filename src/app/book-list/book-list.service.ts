@@ -15,13 +15,7 @@ export class BookListService {
 
   findAllBooks(page: number, limit: number, search: string) {
     const params =  new HttpParams({ fromObject: { page, limit, search }});
-
-    // TODO: INTERCEPTOR!!
-    const headers = {
-      'Authorization': `Bearer ${this.tokenService.getTokenFromLocalStorage()}`
-    }
-
-    return this.http.get<BookPaginationDto>(`${environment.api}/books`, { params, headers })
+    return this.http.get<BookPaginationDto>(`${environment.api}/books`, { params })
   }
 
   findBookById(id: number) {

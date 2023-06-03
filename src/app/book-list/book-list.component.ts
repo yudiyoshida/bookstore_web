@@ -28,15 +28,8 @@ export class BookListComponent implements OnInit{
   }
 
   getAllBooks() {
-    this.bookListService.findAllBooks(1, 30, '').pipe(
-      map((response: any) => {
-        this.books$ = this.separateData(response)
-      }),
-      catchError((err) => {
-        this.toastr.error(err.error.error, 'Erro!')
-        return of([])
-      })
-    )
+    const result = this.bookListService.findAllBooks(1, 30, '');
+    this.books$ = this.separateData(result)
   }
 
   filterBooks($event: Observable<BookPaginationDto>) {
