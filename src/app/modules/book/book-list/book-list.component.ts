@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { BookListService } from './book-list.service';
+import { BookService } from '../book.service';
 import { BookDto, BookPaginationDto } from 'src/shared/dtos/book.dto';
-import { Observable, catchError, map, of } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -13,7 +13,7 @@ export class BookListComponent implements OnInit{
   books$!: Observable<BookDto[]>
 
   constructor(
-    private bookListService: BookListService,
+    private bookService: BookService,
     private toastr: ToastrService,
   ) {}
   
@@ -28,7 +28,7 @@ export class BookListComponent implements OnInit{
   }
 
   getAllBooks() {
-    const result = this.bookListService.findAllBooks(1, 30, '');
+    const result = this.bookService.findAllBooks(1, 30, '');
     this.books$ = this.separateData(result)
   }
 

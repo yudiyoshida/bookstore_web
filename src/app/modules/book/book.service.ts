@@ -2,15 +2,13 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BookDto, BookPaginationDto } from 'src/shared/dtos/book.dto';
 import { environment } from 'src/environments/environment';
-import { TokenService } from 'src/shared/services/token.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class BookListService {
+export class BookService {
   constructor(
     private http: HttpClient,
-    private tokenService: TokenService,
   ) {}
 
   findAllBooks(page: number, limit: number, search: string) {

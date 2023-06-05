@@ -7,19 +7,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { BookListComponent } from './book-list/book-list.component';
-import { BookDetailsComponent } from './book-details/book-details.component';
-import { SidebarComponent } from '../shared/components/sidebar/sidebar.component';
+import { LoginComponent } from './modules/login/login.component';
 import { AuthorizationInterceptor } from 'src/shared/interceptors/authorization/authorization.interceptor';
+import { BookModule } from './modules/book/book.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    BookListComponent,
-    BookDetailsComponent,
-    SidebarComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,7 +27,8 @@ import { AuthorizationInterceptor } from 'src/shared/interceptors/authorization/
       positionClass: 'toast-bottom-left',
       preventDuplicates: true,
       progressBar: true,
-    })
+    }),
+    BookModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthorizationInterceptor, multi: true }

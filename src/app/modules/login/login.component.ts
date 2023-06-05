@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from './login.service';
-import { LoginResBody } from 'src/shared/dtos/login.dto';
 import { ToastrService } from 'ngx-toastr';
 import { TokenService } from 'src/shared/services/token.service';
 
@@ -13,7 +12,6 @@ import { TokenService } from 'src/shared/services/token.service';
 })
 export class LoginComponent implements OnInit {  
   loginForm!: FormGroup
-  loginRes!: LoginResBody
 
   constructor(
     private formBuilder: FormBuilder,
@@ -42,7 +40,6 @@ export class LoginComponent implements OnInit {
   onSubmit(): void {
     this.loginService.login(this.loginForm.value).subscribe({
       next: (response) => {
-        this.loginRes = response;
         this.toastr.success(response.account.name, 'OK!');
 
         // armazenar token no localStorage
