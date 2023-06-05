@@ -17,7 +17,7 @@ export class AuthorizationInterceptor implements HttpInterceptor {
     request = request.clone({
       setHeaders: {
         Authorization: `Bearer ${this.tokenService.getTokenFromLocalStorage()}`,
-        'ngrok-skip-browser-warning': '1'
+        // 'ngrok-skip-browser-warning': '1'
       }
     })
 

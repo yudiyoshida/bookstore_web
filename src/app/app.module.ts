@@ -9,7 +9,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './modules/login/login.component';
 import { AuthorizationInterceptor } from 'src/shared/interceptors/authorization/authorization.interceptor';
-import { BookModule } from './modules/book/book.module';
 
 @NgModule({
   declarations: [
@@ -28,7 +27,6 @@ import { BookModule } from './modules/book/book.module';
       preventDuplicates: true,
       progressBar: true,
     }),
-    BookModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthorizationInterceptor, multi: true }
