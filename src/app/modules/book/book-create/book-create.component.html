@@ -39,7 +39,7 @@
           >
             <option
               *ngFor="let category of categories$ | async"
-              value="{{ category.id }}"
+              [value]="category.id"
             >{{ category.title }}</option>
           </select>
         </div>

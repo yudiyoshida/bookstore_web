@@ -38,6 +38,7 @@ export class BookCreateComponent implements OnInit {
       summaryPortuguese: [' Resumo em portugues   ', Validators.required],
       audioSummaryEnglishUrl: [' http://audioeng.com  ', Validators.required],
       audioSummaryPortugueseUrl: [' http://audiopt.com ', Validators.required],
+      imageUrl: ['']
     })
   }
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BookService } from '../book.service';
-import { BookDto, BookPaginationDto } from 'src/shared/dtos/book.dto';
+import { BookDto } from 'src/shared/dtos/book.dto';
 import { Observable, map } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 
@@ -21,18 +21,13 @@ export class BookListComponent implements OnInit{
     this.getAllBooks();    
   }
 
-  separateData(paginatedData: Observable<BookPaginationDto>) {
-    return paginatedData.pipe(
+  getAllBooks($event = '') {
+    this.books$ = this.bookService.findAllBooks(1, 30, $event).pipe(
       map((data) => data.data)
     )
   }
 
-  getAllBooks() {
-    const result = this.bookService.findAllBooks(1, 30, '');
-    this.books$ = this.separateData(result)
-  }
-
-  filterBooks($event: Observable<BookPaginationDto>) {
-    this.books$ = this.separateData($event);
+  filterBooks($event: string) {
+    this.getAllBooks($event)
   }
 }
