@@ -19,4 +19,8 @@ export class BookService {
   findBookById(id: number) {
     return this.http.get<BookDto>(`${environment.api}/books/${id}`)
   }
+
+  createBook(data: any) {
+    return this.http.post<BookDto>(`${environment.api}/books`, data)
+  }
 }

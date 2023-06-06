@@ -1,15 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { LoginReqBody, LoginResBody } from 'src/shared/dtos/login.dto';
 import { environment } from 'src/environments/environment';
+import { CategoryPaginationDto } from '../dtos/category';
 
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
+export class CategoryService {
+
   constructor(private http: HttpClient) { }
 
-  login(data: LoginReqBody) {
-    return this.http.post<LoginResBody>(`${environment.api}/auth/login/adm`, data);
+  getAll() {
+    return this.http.get<CategoryPaginationDto>(`${environment.api}/categories`)
   }
 }

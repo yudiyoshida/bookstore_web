@@ -6,6 +6,7 @@ import { BookListComponent } from './book-list/book-list.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { SidebarComponent } from 'src/shared/components/sidebar/sidebar.component';
 import { BookCreateComponent } from './book-create/book-create.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { BookCreateComponent } from './book-create/book-create.component';
   ],
   imports: [
     CommonModule,
-    BookRoutingModule
+    BookRoutingModule,
+    ReactiveFormsModule,
   ]
 })
 export class BookModule { }

@@ -2,10 +2,14 @@
   <app-sidebar></app-sidebar>
   <section class="p-5 space-y-4">
     <h1 class="font-bold text-2xl ">Cadastrar um novo livro</h1>
-    <form class="space-y-5">
+    <form
+      [formGroup]="bookForm" (ngSubmit)="onSubmit()"
+      class="space-y-5"
+    >
       <div>
         <label for="title">Qual o título do livro?</label>
         <input
+          formControlName="title"
           type="text"
           name="title"
           id="title"
@@ -13,10 +17,11 @@
           class="border-inputs"
         >
       </div>
-      <div class="space-y-5">
-        <div>
+      <div class="space-y-5 lg:space-y-0 lg:space-x-5 lg:flex lg:justify-between lg:items-start">
+        <div class="grow">
           <label for="author">Quem é o autor?</label>
           <input
+            formControlName="author"
             type="text"
             name="author"
             id="author"
@@ -27,11 +32,15 @@
         <div>
           <label for="category">Qual a categoria do livro?</label>
           <select
+            formControlName="categoryId"
             name="category"
             id="category"
             class="border-inputs bg-white"
           >
-            <option value="1">Categoria 01</option>
+            <option
+              *ngFor="let category of categories$ | async"
+              value="{{ category.id }}"
+            >{{ category.title }}</option>
           </select>
         </div>
       </div>
@@ -39,12 +48,14 @@
         <label for="Resumo (em inglês)">Resumo do livro (em inglês):</label>
         <textarea name="summary-eng" id="summary-eng" cols="30" rows="5"
           class="border-inputs"
+          formControlName="summaryEnglish"
         ></textarea>
       </div>
       <div>
         <label for="Resumo (em português)">Resumo do livro (em português):</label>
         <textarea name="summary-ptbr" id="summary-ptbr" cols="30" rows="5"
           class="border-inputs"
+          formControlName="summaryPortuguese"
         ></textarea>
       </div>
       <div class="space-y-5">
@@ -52,22 +63,26 @@
           <label for="audiobook-eng">Áudio do resumo (em inglês):</label>
           <input type="text" name="audiobook-eng" id="audiobook-eng"
             class="border-inputs"
+            formControlName="audioSummaryPortugueseUrl"
           >
         </div>
         <div>
           <label for="audiobook-ptbr">Áudio do resumo (em português):</label>
           <input type="text" name="audiobook-ptbr" id="audiobook-ptbr"
             class="border-inputs"
+            formControlName="audioSummaryEnglishUrl"
           >
         </div>
       </div>
       <hr>
-      <div class="flex justify-between items-center space-x-3">
+      <div class="flex justify-end items-center space-x-3">
         <button type="submit"
-          class="button-forms basis-3/5"
+          [disabled]="!bookForm.valid"
+          class="button-forms basis-3/5 md:basis-auto"
         >Cadastrar livro</button>
         <button type="submit"
-          class="button-forms basis-2/5 bg-gray-600"
+          routerLink="/books"
+          class="button-forms basis-2/5 md:basis-auto bg-gray-600 hover:bg-gray-700"
         >Cancelar</button>
       </div>
     </form>
