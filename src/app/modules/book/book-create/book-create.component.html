@@ -1,0 +1,75 @@
+<main>
+  <app-sidebar></app-sidebar>
+  <section class="p-5 space-y-4">
+    <h1 class="font-bold text-2xl ">Cadastrar um novo livro</h1>
+    <form class="space-y-5">
+      <div>
+        <label for="title">Qual o título do livro?</label>
+        <input
+          type="text"
+          name="title"
+          id="title"
+          placeholder="Título"
+          class="border-inputs"
+        >
+      </div>
+      <div class="space-y-5">
+        <div>
+          <label for="author">Quem é o autor?</label>
+          <input
+            type="text"
+            name="author"
+            id="author"
+            placeholder="Autor"
+            class="border-inputs"
+          >
+        </div>
+        <div>
+          <label for="category">Qual a categoria do livro?</label>
+          <select
+            name="category"
+            id="category"
+            class="border-inputs bg-white"
+          >
+            <option value="1">Categoria 01</option>
+          </select>
+        </div>
+      </div>
+      <div>
+        <label for="Resumo (em inglês)">Resumo do livro (em inglês):</label>
+        <textarea name="summary-eng" id="summary-eng" cols="30" rows="5"
+          class="border-inputs"
+        ></textarea>
+      </div>
+      <div>
+        <label for="Resumo (em português)">Resumo do livro (em português):</label>
+        <textarea name="summary-ptbr" id="summary-ptbr" cols="30" rows="5"
+          class="border-inputs"
+        ></textarea>
+      </div>
+      <div class="space-y-5">
+        <div>
+          <label for="audiobook-eng">Áudio do resumo (em inglês):</label>
+          <input type="text" name="audiobook-eng" id="audiobook-eng"
+            class="border-inputs"
+          >
+        </div>
+        <div>
+          <label for="audiobook-ptbr">Áudio do resumo (em português):</label>
+          <input type="text" name="audiobook-ptbr" id="audiobook-ptbr"
+            class="border-inputs"
+          >
+        </div>
+      </div>
+      <hr>
+      <div class="flex justify-between items-center space-x-3">
+        <button type="submit"
+          class="button-forms basis-3/5"
+        >Cadastrar livro</button>
+        <button type="submit"
+          class="button-forms basis-2/5 bg-gray-600"
+        >Cancelar</button>
+      </div>
+    </form>
+  </section>
+</main>

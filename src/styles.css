@@ -2,3 +2,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .border-inputs {
+    @apply border-2 p-3 w-full rounded-md;
+  }
+
+  .button-forms {
+    @apply text-white bg-title-blue p-3 rounded-md hover:outline-none font-bold hover:bg-button-hover disabled:bg-gray-600;
+  }
+}

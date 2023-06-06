@@ -9,15 +9,15 @@
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div class="mb-5">
           <label for="email" class="font-bold">E-mail</label>
-          <input type="email" name="email" id="input-email" formControlName="credential" class="peer border-2 boder-black block p-2 w-full focus:outline-none focus:border-title-blue rounded-md invalid:border-red-600">
+          <input type="email" name="email" id="input-email" formControlName="credential" class="peer border-inputs block focus:outline-none focus:border-title-blue invalid:border-red-600">
           <!-- <p class="invisible peer-invalid:visible">Insira um e-mail válido.</p> -->
         </div>
         <div class="mb-10">
           <label for="password" class="font-bold">Senha</label>
-          <input type="password" name="password" id="input-pass" formControlName="password" class="peer border-2 boder-black block p-2 w-full focus:outline-none focus:border-title-blue rounded-md invalid:border-red-600">
+          <input type="password" name="password" id="input-pass" formControlName="password" class="peer border-inputs block focus:outline-none focus:border-title-blue invalid:border-red-600">
         </div>
         <div>
-          <button [disabled]="!loginForm.valid" type="submit" class="w-full bg-title-blue p-3 rounded-md hover:outline-none font-bold hover:bg-button-hover disabled:bg-gray-600">Entrar!</button>
+          <button [disabled]="!loginForm.valid" type="submit" class="button-forms w-full">Entrar!</button>
         </div>
       </form>
     </div>
