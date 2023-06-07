@@ -58,21 +58,31 @@
           formControlName="summaryPortuguese"
         ></textarea>
       </div>
-      <div class="space-y-5">
-        <div>
-          <label for="audiobook-eng">Áudio do resumo (em inglês):</label>
-          <input type="text" name="audiobook-eng" id="audiobook-eng"
-            class="border-inputs"
-            formControlName="audioSummaryPortugueseUrl"
-          >
-        </div>
-        <div>
-          <label for="audiobook-ptbr">Áudio do resumo (em português):</label>
-          <input type="text" name="audiobook-ptbr" id="audiobook-ptbr"
-            class="border-inputs"
-            formControlName="audioSummaryEnglishUrl"
-          >
-        </div>
+      <div>
+        <label for="audiobook-eng">Áudio do resumo (em inglês):</label>
+        <input type="text" name="audiobook-eng" id="audiobook-eng"
+          class="border-inputs"
+          formControlName="audioSummaryEnglishUrl"
+        >
+      </div>
+      <div>
+        <label for="audiobook-ptbr">Áudio do resumo (em português):</label>
+        <input type="text" name="audiobook-ptbr" id="audiobook-ptbr"
+          class="border-inputs"
+          formControlName="audioSummaryPortugueseUrl"
+        >
+      </div>
+      <div>
+        <label for="imageUrl">Imagem de capa do livro</label>
+        <input type="file" name="imageUrl" id="imageUrl"
+          class="block border-inputs"
+          (change)="onFileSelect($event)"
+        >
+      </div>
+      <div>
+        <a *ngIf="imageUrl" [href]="imageUrl" target="_blank">
+          <img [src]="imageUrl" alt="" class="h-52">
+        </a>
       </div>
       <hr>
       <div class="flex justify-end items-center space-x-3">
