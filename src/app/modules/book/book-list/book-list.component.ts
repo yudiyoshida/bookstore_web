@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BookService } from '../book.service';
 import { BookDto } from 'src/shared/dtos/book.dto';
-import { Observable, map } from 'rxjs';
+import { Observable, catchError, map, of } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -23,7 +23,11 @@ export class BookListComponent implements OnInit{
 
   getAllBooks($event = '') {
     this.books$ = this.bookService.findAllBooks(1, 30, $event).pipe(
-      map((data) => data.data)
+      map((data) => data.data),
+      catchError((err) => {
+        this.toastr.error(err.error.error);
+        return of([]);
+      })
     )
   }
 

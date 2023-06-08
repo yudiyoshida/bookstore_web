@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
     // });
 
     this.loginForm = this.formBuilder.group({
-      credential: ['user@getnada.com', [Validators.required, Validators.email]],
+      credential: ['admin@getnada.com', [Validators.required, Validators.email]],
       password: ['123456789', [Validators.required]],
     });
   }

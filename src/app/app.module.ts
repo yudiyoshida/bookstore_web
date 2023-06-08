@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './modules/login/login.component';
 import { AuthorizationInterceptor } from 'src/shared/interceptors/authorization/authorization.interceptor';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,9 @@ import { AuthorizationInterceptor } from 'src/shared/interceptors/authorization/
     ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    NgxSpinnerModule.forRoot({
+      type: 'ball-scale-multiple'
+    }),
     ToastrModule.forRoot({
       timeOut: 5000,
       positionClass: 'toast-bottom-left',
