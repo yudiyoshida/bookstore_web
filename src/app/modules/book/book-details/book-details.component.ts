@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { BookDto } from 'src/shared/dtos/book.dto';
 import { BookService } from '../book.service';
+import { NgxSpinnerService } from "ngx-spinner"
 
 @Component({
   selector: 'app-book-details',
@@ -14,14 +15,19 @@ export class BookDetailsComponent implements OnInit {
   
   constructor(
     private bookService: BookService,
-    private router: ActivatedRoute
+    private router: ActivatedRoute,
+    private spinner: NgxSpinnerService
   ) {}
 
   ngOnInit(): void {
     const routeParams = this.router.snapshot.paramMap;
     const bookId = Number(routeParams.get('id'));
 
-    this.getBookById(bookId);
+    this.spinner.show();
+    setTimeout(() => {
+      this.getBookById(bookId);
+      this.spinner.hide();
+    }, 1000)
   }
 
   getBookById(id: number) {

@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
@@ -22,15 +22,15 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    NgxSpinnerModule.forRoot({
-      type: 'ball-scale-multiple'
-    }),
     ToastrModule.forRoot({
       timeOut: 5000,
       positionClass: 'toast-bottom-left',
       preventDuplicates: true,
       progressBar: true,
     }),
+    NgxSpinnerModule.forRoot({
+      type: 'ball-triangle-path'
+    })
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthorizationInterceptor, multi: true }
